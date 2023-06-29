@@ -43,5 +43,6 @@ class Producto(models.Model):
     def __str__(self):
         return '{}'.format(self.descripcion)
  
+ 
     class Meta:
         verbose_name_plural = "Productos"
