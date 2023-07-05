@@ -1,8 +1,9 @@
 from django.urls import path
 from api.apiviews import ProductoList, ProductoDetalle, CategoriaList, SubCategoriaList, CategoriaDetalle, SubCategoriaAdd,ProductoViewSet
-from api.apiviews import UserCreate
+from api.apiviews import UserCreate, LoginView
 
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 
 router = DefaultRouter()
 router.register('v2/productos', ProductoViewSet, basename='productos')
@@ -18,6 +19,11 @@ urlpatterns = [
     path('v1/categorias/<int:cat_pk>/addsubcategorias/', SubCategoriaAdd.as_view(),name='subcategoria_apiview' ),
 
     path('v3/usuarios/', UserCreate.as_view(), name='usuario_crear'),
+
+    path("v4/login/", LoginView.as_view(), name="login"),
+
+    #Importar vistas de DRF para authtoken
+    path("v4/login-drf/", views.obtain_auth_token, name="login_drf"),
 ]
 
 
