@@ -1,6 +1,6 @@
 from django.urls import path
 from api.apiviews import ProductoList, ProductoDetalle, CategoriaList, SubCategoriaList, CategoriaDetalle, SubCategoriaAdd,ProductoViewSet
-
+from api.apiviews import UserCreate
 
 from rest_framework.routers import DefaultRouter
 
@@ -16,6 +16,8 @@ urlpatterns = [
     path('v1/categorias/<int:pk>/subcategorias/', SubCategoriaList.as_view(),name='sc_list' ),
 
     path('v1/categorias/<int:cat_pk>/addsubcategorias/', SubCategoriaAdd.as_view(),name='subcategoria_apiview' ),
+
+    path('v3/usuarios/', UserCreate.as_view(), name='usuario_crear'),
 ]
 
 
