@@ -1,8 +1,10 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
+
 
 # crear modelo abstracto 
 class OwnerModel(models.Model):
+
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
  
     class Meta:

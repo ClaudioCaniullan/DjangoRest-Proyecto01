@@ -4,18 +4,37 @@ from django.contrib.auth.models import User
 
 from rest_framework.authtoken.models import Token
  
+
+
 class ProductoSerializer(serializers.ModelSerializer):
+
+    owner = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+        )
+    
     class Meta:
         model= Producto
         fields = '__all__'
 
 
+
 class CategoriaSerializer(serializers.ModelSerializer):
+
+    owner = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+        )
+    
     class Meta:
         model = Categoria
         fields= '__all__'
  
+
 class SubCategoriaSerializer(serializers.ModelSerializer):
+        
+        owner = serializers.HiddenField(
+            default=serializers.CurrentUserDefault()
+        )
+
         class Meta:
             model = SubCategoria
             fields= '__all__'
@@ -23,7 +42,7 @@ class SubCategoriaSerializer(serializers.ModelSerializer):
 
  
 class UserSerializer(serializers.ModelSerializer):
- 
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
