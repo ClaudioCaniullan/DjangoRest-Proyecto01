@@ -3,7 +3,7 @@ from django.urls import path
 # swagger no operativo 
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
-
+# inicializar instancia de view swagger
 squema_view = get_swagger_view(title="Restful Api Rest Curso Udemy julio 2023")
 
 from api.apiviews import ProductoList, ProductoDetalle, CategoriaList, SubCategoriaList, CategoriaDetalle, SubCategoriaAdd,ProductoViewSet
@@ -37,7 +37,6 @@ urlpatterns = [
     path("v4/login-drf/", views.obtain_auth_token, name="login_drf"),
 
     path('swagger-docs/', squema_view),
-
     path('coreapi-docs/', include_docs_urls('Documentacion RestAPI Curso Udemy Julio 2023 COREAPI')),
 ]
 
