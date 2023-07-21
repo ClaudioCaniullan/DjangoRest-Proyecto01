@@ -5,6 +5,13 @@ from api.apiviews import UserCreate, LoginView
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
+
+from  rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
+
+# inicializar vista de swagger
+schema_view = get_swagger_view(title='Restful API DRF UDEMY')
+
 router = DefaultRouter()
 router.register('v2/productos', ProductoViewSet, basename='productos')
 
@@ -24,6 +31,9 @@ urlpatterns = [
 
     #Importar vistas de DRF para authtoken
     path("v4/login-drf/", views.obtain_auth_token, name="login_drf"),
+    
+    path('swagger-docs/', schema_view), 
+    path('coreapi-docs/', include_docs_urls(title = 'Documentacion COREAPI'))
 ]
 
 
